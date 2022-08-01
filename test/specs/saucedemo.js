@@ -1,9 +1,16 @@
 const LoginPage = require("../pageobjects/login.page");
 const SecurePage = require("../pageobjects/secure.page");
 
-describe("Test a", () => {
+describe("Test A", () => {
   it("Should login with valid credentials", async () => {
     await LoginPage.open();
     await LoginPage.login("standard_user", "secret_sauce");
+  });
+  it("Should successfully add elements to the cart", async () => {
+    await SecurePage.addItems();
+    await expect(SecurePage.shoppingCounter).toHaveText("6");
+  });
+  it("Should successfully remove elements from the cart", async () => {
+    //await SecurePage.removeItems();
   });
 });

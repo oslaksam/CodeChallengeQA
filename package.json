@@ -1,0 +1,27 @@
+{
+  "name": "codechallengeqa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslaksam/CodeChallengeQA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oslaksam/CodeChallengeQA/issues"
+  },
+  "homepage": "https://github.com/oslaksam/CodeChallengeQA#readme",
+  "devDependencies": {
+    "@wdio/cli": "^7.20.9"
+  },
+  "dependencies": {
+    "wdio-html-nice-reporter": "^8.0.3-beta2",
+    "wdio-video-reporter": "^3.2.1"
+  }
+}

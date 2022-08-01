@@ -38,6 +38,14 @@ class SecurePage extends Page {
     $("//a[@id='item_5_title_link']/div");
   }
 
+  get shoppingCounter() {
+    $("//div[@id='shopping_cart_container']/a/span");
+  }
+
+  get continueShopping() {
+    $("#continue-shopping");
+  }
+
   get addBackpack() {
     $("#add-to-cart-sauce-labs-backpack");
   }
@@ -56,11 +64,24 @@ class SecurePage extends Page {
   get addAllTshirt() {
     $("#add-to-cart-test.allthethings()-t-shirt-(red)");
   }
-  get shoppingCounter() {
-    $("//div[@id='shopping_cart_container']/a/span");
+
+  get removeBackpack() {
+    $("#remove-sauce-labs-backpack");
   }
-  get continueShopping() {
-    $("#continue-shopping");
+  get removeBoltTshirt() {
+    $("#remove-sauce-labs-bolt-t-shirt");
+  }
+  get removeOnesie() {
+    $("#remove-sauce-labs-onesie");
+  }
+  get removeBikeLight() {
+    $("#remove-sauce-labs-bike-light");
+  }
+  get removeJacket() {
+    $("#remove-sauce-labs-fleece-jacket");
+  }
+  get removeAllTshirt() {
+    $("#remove-test.allthethings()-t-shirt-(red)");
   }
 }
 

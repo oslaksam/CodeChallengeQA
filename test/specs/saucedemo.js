@@ -17,6 +17,9 @@ describe("Test A", () => {
     await securePage.removeItems();
     await securePage.checkRemoved();
   });
+  it("Should logout", async () => {
+    await securePage.logout();
+  });
 });
 describe("Test B", () => {
   it("Should login with valid credentials", async () => {
@@ -28,5 +31,8 @@ describe("Test B", () => {
     await securePage.checkTitle(checkData);
     await securePage.checkDescription(checkData);
     await securePage.checkPrice(checkData);
+  });
+  it("Should logout", async () => {
+    await securePage.logout();
   });
 });

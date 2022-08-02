@@ -161,6 +161,13 @@ class SecurePage extends Page {
       "#inventory_container > div > div:nth-child(6) > div.inventory_item_description > div.inventory_item_label > div"
     );
   }
+  get menuButton() {
+    return $("#react-burger-menu-btn");
+  }
+
+  get logoutButton() {
+    return $("#logout_sidebar_link");
+  }
 
   /**
    * a method to encapsule automation code to interact with the page
@@ -240,6 +247,11 @@ class SecurePage extends Page {
     await expect(this.allTshirtPrice).toHaveText(data.allTshirt.price);
     await expect(this.backPackPrice).toHaveText(data.backpack.price);
     await expect(this.jacketPrice).toHaveText(data.jacket.price);
+  }
+
+  async logout() {
+    await this.menuButton.click();
+    await this.logoutButton.click();
   }
 }
 

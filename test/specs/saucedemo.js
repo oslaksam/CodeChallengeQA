@@ -1,4 +1,4 @@
-const loginData = require("../testdata/logindata");
+const userData = require("../testdata/users");
 const checkData = require("../testdata/checkdata");
 const loginPage = require("../pageobjects/login.page");
 const securePage = require("../pageobjects/secure.page");
@@ -6,12 +6,15 @@ const securePage = require("../pageobjects/secure.page");
 describe("Test A", () => {
   it("Should login with valid credentials", async () => {
     await loginPage.open();
-    await loginPage.login(loginData.username, loginData.password);
+    await loginPage.login(
+      userData.standard.username,
+      userData.standard.password
+    );
     await securePage.checkLogin();
   });
   it("Should successfully add elements to the cart", async () => {
     await securePage.addItems();
-    await securePage.checkAdded();
+    await securePage.checkCartCount("6");
   });
   it("Should successfully remove elements from the cart", async () => {
     await securePage.removeItems();
@@ -24,7 +27,10 @@ describe("Test A", () => {
 describe("Test B", () => {
   it("Should login with valid credentials", async () => {
     await loginPage.open();
-    await loginPage.login(loginData.username, loginData.password);
+    await loginPage.login(
+      userData.standard.username,
+      userData.standard.password
+    );
     await securePage.checkLogin();
   });
   it("Should successfully compare name, description and price of the elements with the expected data", async () => {

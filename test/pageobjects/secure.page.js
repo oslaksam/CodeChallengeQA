@@ -92,6 +92,15 @@ class SecurePage extends Page {
     await this.addJacket.click();
     await this.addAllTshirt.click();
   }
+
+  async removeItems() {
+    await this.removeBackpack.click();
+    await this.removeBoltTshirt.click();
+    await this.removeOnesie.click();
+    await this.removeBikeLight.click();
+    await this.removeJacket.click();
+    await this.removeAllTshirt.click();
+  }
 }
 
 module.exports = new SecurePage();

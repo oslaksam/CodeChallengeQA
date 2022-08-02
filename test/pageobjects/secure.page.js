@@ -170,8 +170,7 @@ class SecurePage extends Page {
   }
 
   /**
-   * a method to encapsule automation code to interact with the page
-   * e.g. to login using username and password
+   * This method will add all avalivable items to the cart
    */
   async addItems() {
     await this.addBackpack.click();
@@ -181,7 +180,9 @@ class SecurePage extends Page {
     await this.addJacket.click();
     await this.addAllTshirt.click();
   }
-
+  /**
+   * This method will remove all added items from the cart
+   */
   async removeItems() {
     await this.removeBackpack.click();
     await this.removeBoltTshirt.click();
@@ -192,8 +193,7 @@ class SecurePage extends Page {
   }
 
   /**
-   * a method to check if the elements exist on the page
-   *
+   * This method will check that logging in was successful
    */
   async checkLogin() {
     await expect(this.headerContainer).toBeDisplayed();
@@ -204,7 +204,10 @@ class SecurePage extends Page {
     await expect(this.productLinkBackpack).toBeDisplayed();
     await expect(this.productLinkJacket).toBeDisplayed();
   }
-
+  /**
+   * This method will check that logging in was not successful
+   * Was irrelevant to the test, but I kept it in case it is needed in the future
+   */
   async checkLoginNegative() {
     await expect(this.headerContainer).not.toBeDisplayed({ timeout: 100 });
     await expect(this.productLinkBikeLight).not.toBeDisplayed({ timeout: 100 });
@@ -216,16 +219,23 @@ class SecurePage extends Page {
     await expect(this.productLinkBackpack).not.toBeDisplayed({ timeout: 100 });
     await expect(this.productLinkJacket).not.toBeDisplayed({ timeout: 100 });
   }
-
+  /**
+   * This method tests whether the cart contains 6 items
+   */
   async checkAdded() {
     await expect(this.shoppingCounter).toHaveText("6");
   }
-
+  /**
+   * This method tests whether the cart contains 0 items
+   */
   async checkRemoved() {
     let elem = await this.shoppingCounter;
     await expect(elem).not.toExist();
   }
-
+  /**
+   * This method tests whether the names of the items on the page correspond to the test data
+   * @param {Object} data - This is the data that will be used to compare the names of the items in the cart
+   */
   async checkTitle(data) {
     await expect(this.productLinkBikeLight).toHaveText(data.bikelight.name);
     await expect(this.productLinkBoltTshirt).toHaveText(data.boltTshirt.name);
@@ -234,7 +244,10 @@ class SecurePage extends Page {
     await expect(this.productLinkBackpack).toHaveText(data.backpack.name);
     await expect(this.productLinkJacket).toHaveText(data.jacket.name);
   }
-
+  /**
+   * This method tests whether the description of the items on the page correspond to the test data
+   * @param {Object} data - This is the data that will be used to compare the descriptions of the items in the cart
+   */
   async checkDescription(data) {
     await expect(this.bikeLightDescription).toHaveText(
       data.bikelight.description
@@ -251,7 +264,10 @@ class SecurePage extends Page {
     );
     await expect(this.jacketDescription).toHaveText(data.jacket.description);
   }
-
+  /**
+   * This method tests whether the prices of the items on the page correspond to the test data
+   * @param {Object} data This is the data that will be used to compare the prices of the items in the cart
+   */
   async checkPrice(data) {
     await expect(this.bikeLightPrice).toHaveText(data.bikelight.price);
     await expect(this.boltTshirtPrice).toHaveText(data.boltTshirt.price);
@@ -260,16 +276,26 @@ class SecurePage extends Page {
     await expect(this.backPackPrice).toHaveText(data.backpack.price);
     await expect(this.jacketPrice).toHaveText(data.jacket.price);
   }
-
+  /**
+   * This method is called when the user wants to logout
+   */
   async logout() {
     await this.menuButton.click();
     await this.logoutButton.click();
   }
-
+  /**
+   * This method is called to assert amount of items in the cart
+   * @param {String} count Number of items in the cart represented as a string
+   */
   async checkCartCount(count) {
     await expect(this.shoppingCounter).toHaveText(count);
   }
-
+  /**
+   * This method is called to enter customer data and continue the purchasing process
+   * @param {String} firstName First name of the customer
+   * @param {String} lastName Lirst name of the customer
+   * @param {String} zipCode Zip code of the customer
+   */
   async purchaseItems(firstName, lastName, zipCode) {
     await $("#shopping_cart_container > a").click();
     await $("#checkout").click();
@@ -278,7 +304,10 @@ class SecurePage extends Page {
     await $("#postal-code").setValue(zipCode);
     await $("#continue").click();
   }
-
+  /**
+   * This method compares that the price and the delivery service info are correct
+   * Works only when customer orders all the 6 items in the menu
+   */
   async checkPriceInfo() {
     await expect(
       $(

@@ -11,3 +11,19 @@ npx wdio wdio.conf.js
 ```javascript  
 npx wdio wdio.conf.js --suite saucedemo
 ```
+# To build the Docker container you can run:
+```javascript  
+docker build -t mytest -f Dockerfile .
+```
+# Then to run the tests, execute:
+```javascript  
+docker run -it mytest
+```
+# To use Docker compose (issues)
+```javascript  
+docker compose build
+```
+# Then to run the tests from docker compose execute: (issues)
+```javascript  
+docker compose up --exit-code-from runtests
+```

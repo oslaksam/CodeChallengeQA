@@ -84,6 +84,10 @@ class SecurePage extends Page {
     return $('[name="remove-test.allthethings()-t-shirt-(red)"]');
   }
 
+  /**
+   * a method to encapsule automation code to interact with the page
+   * e.g. to login using username and password
+   */
   async addItems() {
     await this.addBackpack.click();
     await this.addBoltTshirt.click();
@@ -100,6 +104,29 @@ class SecurePage extends Page {
     await this.removeBikeLight.click();
     await this.removeJacket.click();
     await this.removeAllTshirt.click();
+  }
+
+  /**
+   * a method to check if the elements exist on the page
+   *
+   */
+  async check() {
+    await expect(this.headerContainer).toBeDisplayed();
+    await expect(this.productLink0).toBeDisplayed();
+    await expect(this.productLink1).toBeDisplayed();
+    await expect(this.productLink2).toBeDisplayed();
+    await expect(this.productLink3).toBeDisplayed();
+    await expect(this.productLink4).toBeDisplayed();
+    await expect(this.productLink5).toBeDisplayed();
+  }
+
+  async checkAdded() {
+    await expect(this.shoppingCounter).toHaveText("6");
+  }
+
+  async checkRemoved() {
+    let elem = await this.shoppingCounter;
+    await expect(elem).not.toExist();
   }
 }
 

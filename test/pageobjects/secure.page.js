@@ -205,6 +205,18 @@ class SecurePage extends Page {
     await expect(this.productLinkJacket).toBeDisplayed();
   }
 
+  async checkLoginNegative() {
+    await expect(this.headerContainer).not.toBeDisplayed({ timeout: 100 });
+    await expect(this.productLinkBikeLight).not.toBeDisplayed({ timeout: 100 });
+    await expect(this.productLinkBoltTshirt).not.toBeDisplayed({
+      timeout: 100,
+    });
+    await expect(this.productLinkOnesie).not.toBeDisplayed({ timeout: 100 });
+    await expect(this.productLinkAllTshirt).not.toBeDisplayed({ timeout: 100 });
+    await expect(this.productLinkBackpack).not.toBeDisplayed({ timeout: 100 });
+    await expect(this.productLinkJacket).not.toBeDisplayed({ timeout: 100 });
+  }
+
   async checkAdded() {
     await expect(this.shoppingCounter).toHaveText("6");
   }
@@ -252,6 +264,52 @@ class SecurePage extends Page {
   async logout() {
     await this.menuButton.click();
     await this.logoutButton.click();
+  }
+
+  async checkCartCount(count) {
+    await expect(this.shoppingCounter).toHaveText(count);
+  }
+
+  async purchaseItems(firstName, lastName, zipCode) {
+    await $("#shopping_cart_container > a").click();
+    await $("#checkout").click();
+    await $("#first-name").setValue(firstName);
+    await $("#last-name").setValue(lastName);
+    await $("#postal-code").setValue(zipCode);
+    await $("#continue").click();
+  }
+
+  async checkPriceInfo() {
+    await expect(
+      $(
+        "#checkout_summary_container > div > div.summary_info > div:nth-child(4)"
+      )
+    ).toHaveText("FREE PONY EXPRESS DELIVERY!");
+    await expect(
+      $(
+        " #checkout_summary_container > div > div.summary_info > div.summary_subtotal_label"
+      )
+    ).toHaveText("Item total: $129.94");
+    await expect(
+      $(
+        "#checkout_summary_container > div > div.summary_info > div.summary_tax_label"
+      )
+    ).toHaveText("Tax: $10.40");
+    await expect(
+      $(
+        "#checkout_summary_container > div > div.summary_info > div.summary_total_label"
+      )
+    ).toHaveText("Total: $140.34");
+  }
+  async finalizePurchase() {
+    await $("#finish").click();
+    await expect($("#checkout_complete_container > h2")).toHaveText(
+      "THANK YOU FOR YOUR ORDER"
+    );
+    await expect($("#checkout_complete_container > div")).toHaveText(
+      "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+    );
+    await $("#back-to-products").click();
   }
 }
 

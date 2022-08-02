@@ -31,6 +31,20 @@ class LoginPage extends Page {
     await this.btnSubmit.click();
   }
 
+  async checkErrorMessage() {
+    await $(
+      "#login_button_container > div > form > div.error-message-container.error > h3"
+    ).waitForDisplayed();
+    await expect(
+      $(
+        "#login_button_container > div > form > div.error-message-container.error > h3"
+      )
+    ).toHaveText("Epic sadface: Sorry, this user has been locked out.");
+    await $(
+      "#login_button_container > div > form > div.error-message-container.error > h3 > button"
+    ).click();
+  }
+
   /**
    * overwrite specific options to adapt it to page object
    */

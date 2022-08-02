@@ -45,7 +45,7 @@ class SecurePage extends Page {
   }
 
   get shoppingCounter() {
-    //return $("//div[@id='shopping_cart_container']/a/span");
+    return $("//div[@id='shopping_cart_container']/a/span");
   }
 
   get continueShopping() {
@@ -190,12 +190,12 @@ class SecurePage extends Page {
    */
   async checkLogin() {
     await expect(this.headerContainer).toBeDisplayed();
-    await expect(this.productLink0).toBeDisplayed();
-    await expect(this.productLink1).toBeDisplayed();
-    await expect(this.productLink2).toBeDisplayed();
-    await expect(this.productLink3).toBeDisplayed();
-    await expect(this.productLink4).toBeDisplayed();
-    await expect(this.productLink5).toBeDisplayed();
+    await expect(this.productLinkBikeLight).toBeDisplayed();
+    await expect(this.productLinkBoltTshirt).toBeDisplayed();
+    await expect(this.productLinkOnesie).toBeDisplayed();
+    await expect(this.productLinkAllTshirt).toBeDisplayed();
+    await expect(this.productLinkBackpack).toBeDisplayed();
+    await expect(this.productLinkJacket).toBeDisplayed();
   }
 
   async checkAdded() {
@@ -205,6 +205,15 @@ class SecurePage extends Page {
   async checkRemoved() {
     let elem = await this.shoppingCounter;
     await expect(elem).not.toExist();
+  }
+
+  async checkTitle(data) {
+    await expect(this.productLinkBikeLight).toHaveText(data.bikelight.name);
+    await expect(this.productLinkBoltTshirt).toHaveText(data.boltTshirt.name);
+    await expect(this.productLinkOnesie).toHaveText(data.onesie.name);
+    await expect(this.productLinkAllTshirt).toHaveText(data.allTshirt.name);
+    await expect(this.productLinkBackpack).toHaveText(data.backpack.name);
+    await expect(this.productLinkJacket).toHaveText(data.jacket.name);
   }
 }
 

@@ -28,10 +28,9 @@ exports.config = {
   // Patterns to exclude.
   suites: {
     saucedemo: ["./test/specs/saucedemo.js"],
+    extrademo: ["./test/specs/extrademo.js"],
   },
-  exclude: [
-    // 'path/to/excluded/files'
-  ],
+  exclude: ["/test/specs/example.e2e.js"],
   //
   // ============
   // Capabilities

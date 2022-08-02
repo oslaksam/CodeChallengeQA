@@ -1,7 +1,7 @@
 //const { ReportAggregator, HtmlReporter } = require("wdio-html-nice-reporter");
 // wdio.conf.js
 //const allure = require("allure-commandline");
-const { TimelineService } = require("wdio-timeline-reporter/timeline-service");
+//const { TimelineService } = require("wdio-timeline-reporter/timeline-service");
 exports.config = {
   //
   // ====================
@@ -47,7 +47,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 10,
+  maxInstances: 1,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -64,6 +64,7 @@ exports.config = {
           "--disable-infobars",
           "--headless",
           "--disable-gpu",
+          "--disable-dev-shm-usage",
           "--window-size=1440,735",
         ],
       },
@@ -116,7 +117,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: [[TimelineService], ["chromedriver"]],
+  services: [["chromedriver"]],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber

@@ -232,6 +232,15 @@ class SecurePage extends Page {
     );
     await expect(this.jacketDescription).toHaveText(data.jacket.description);
   }
+
+  async checkPrice(data) {
+    await expect(this.bikeLightPrice).toHaveText(data.bikelight.price);
+    await expect(this.boltTshirtPrice).toHaveText(data.boltTshirt.price);
+    await expect(this.onesiePrice).toHaveText(data.onesie.price);
+    await expect(this.allTshirtPrice).toHaveText(data.allTshirt.price);
+    await expect(this.backPackPrice).toHaveText(data.backpack.price);
+    await expect(this.jacketPrice).toHaveText(data.jacket.price);
+  }
 }
 
 module.exports = new SecurePage();

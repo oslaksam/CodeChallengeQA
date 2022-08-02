@@ -6,6 +6,7 @@ const securePage = require("../pageobjects/secure.page");
 describe("Test A", () => {
   it("Should login with valid credentials", async () => {
     await loginPage.open();
+    await browser.maximizeWindow();
     await loginPage.login(
       userData.standard.username,
       userData.standard.password
@@ -27,6 +28,7 @@ describe("Test A", () => {
 describe("Test B", () => {
   it("Should login with valid credentials", async () => {
     await loginPage.open();
+    await browser.maximizeWindow();
     await loginPage.login(
       userData.standard.username,
       userData.standard.password

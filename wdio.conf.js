@@ -30,7 +30,7 @@ exports.config = {
     saucedemo: ["./test/specs/saucedemo.js"],
     extrademo: ["./test/specs/extrademo.js"],
   },
-  exclude: ["/test/specs/example.e2e.js"],
+  exclude: ["./test/specs/example.e2e.js", "./test/specs/demoapp.js"],
   //
   // ============
   // Capabilities

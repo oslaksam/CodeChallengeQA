@@ -26,5 +26,6 @@ describe("Test B", () => {
   });
   it("Should successfully compare name, description and price of the elements with the expected data", async () => {
     await securePage.checkTitle(checkData);
+    await securePage.checkDescription(checkData);
   });
 });

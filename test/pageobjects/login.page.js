@@ -30,7 +30,9 @@ class LoginPage extends Page {
     await this.inputPassword.setValue(password);
     await this.btnSubmit.click();
   }
-
+  /**
+   * This method will check for error messages when user tries to login as a locked out user
+   */
   async checkErrorMessage() {
     await $(
       "#login_button_container > div > form > div.error-message-container.error > h3"

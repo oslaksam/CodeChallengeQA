@@ -20,4 +20,12 @@ describe("Extra tests", () => {
       "#login_button_container > div > form > div.error-message-container.error > h3 > button"
     ).click();
   });
+  it("Should have 3 items in the cart because we logged in as a problematic user", async () => {
+    await browser.maximizeWindow();
+    await loginPage.open();
+    await loginPage.login(userData.problem.username, userData.problem.password);
+    await securePage.checkLogin();
+    await securePage.addItems();
+    await expect(securePage.shoppingCounter).toHaveText("3");
+  });
 });

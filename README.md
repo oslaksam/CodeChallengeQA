@@ -1,31 +1,41 @@
 # CodeChallengeQA
-It is written using WebdriverIO.
+The challenge was written using WebdriverIO.
 The tests use Faker.js library to generate random data.
-##  To install all packages in the package.json
+##  To install all packages in the package.json:
 ```javascript  
 npm install
 ```
-##  Run all tests
+##  Run all tests:
 ```javascript  
 npx wdio wdio.conf.js
 ```
-##  Run a specific suite configured in the configuration file
+##  Run a specific suite configured in the configuration file:
 ```javascript  
 npx wdio wdio.conf.js --suite saucedemo
 ```
-##  To build the Docker container you can run:
+##  Run to generate a test report using Allure reporter:
+```javascript  
+npx allure generate .\allure-results\
+```
+or on Linux
+```javascript  
+npx allure generate ./allure-results
+```
+then
+```javascript
+npx allure open
+```
+##  To build and run the Docker container you can run:
 ```javascript  
 docker build -t mytest -f Dockerfile .
-```
-##  Then to run the tests, execute:
-```javascript  
 docker run -it mytest
 ```
-##  To use Docker compose (issues)
+##  To use Docker compose for running the Selenium GRID:
 ```javascript  
 docker compose build
+docker compose up
 ```
-##  Then to run the tests from docker compose execute: (issues)
-```javascript  
-docker compose up --exit-code-from runtests
+##  After Selenium GRID is running you can run the tests:
+```javascript
+npx wdio grid-docker-wdio.conf.js
 ```

@@ -20,7 +20,8 @@
   "devDependencies": {
     "@faker-js/faker": "^7.3.0",
     "@wdio/allure-reporter": "^7.20.7",
-    "@wdio/cli": "^7.20.9"
+    "@wdio/cli": "^7.20.9",
+    "@wdio/selenium-standalone-service": "^7.20.8"
   },
   "dependencies": {
     "@wdio/local-runner": "^7.20.9",
